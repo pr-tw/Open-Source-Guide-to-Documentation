@@ -1,6 +1,6 @@
-# An Open-Source Guide to Documentation
+# [An Open-Source Guide to Documentation](https://pr-tw.github.io/Open-Source-Guide-to-Documentation/index.html)
 
-Welcome to the documentation for _An Open-Source Guide to Documentation_!
+Welcome to the documentation for _[An Open-Source Guide to Documentation](https://pr-tw.github.io/Open-Source-Guide-to-Documentation/index.html)_!
 
 Writing good documentation is hard, managing and updating good docs is a project in of itself. The purpose of this book is to provide strategies that any maintainer can implement.
 
