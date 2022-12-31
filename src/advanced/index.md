@@ -45,6 +45,6 @@ Consider adding a spellchecker to your text editor. For example, VS Code has a M
 
 ### Formatters
 
-While the line between linters and formatters is thin, some formatters like [Prettier](https://prettier.io) and [dprint](https://dprint.dev) can format and lint markdown files and even code blocks. Formatters aren't a one size fits all solution. For example, Prettier doesn't work for Python code blocks. You'd have to use a formatter like [blacken-docs](https://github.com/adamchainz/blacken-docs) which runs the [black](https://black.readthedocs.io/en/stable/) formatter on code blocks.
+While the line between linters and formatters is thin, some formatters like [Prettier](https://prettier.io) and [dprint](https://dprint.dev) can format and lint markdown files and even code blocks. Formatters aren't a one size fits all solution. For example, Prettier doesn't work for Python code blocks. You'd have to use a formatter like [blacken-docs](https://github.com/adamchainz/blacken-docs), which runs the [black](https://black.readthedocs.io/en/stable/) formatter on code blocks.
 
 Formatting is useful so that you have consistency throughout your docs and check for specific errors.

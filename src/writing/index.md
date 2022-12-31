@@ -11,7 +11,7 @@ Use clear and concise language, and avoid using technical jargon or complex sent
 ## Using headings and subheadings to organize your content
 
 Turning an outline into headings and subheadings keeps your documentation focused and on tasked.
-Your users can benefit from headings and subheadings as they can quickly scan the document to find answers to their questions.
+Your users can benefit from headings and subheadings, as they can quickly scan the document to find answers to their questions.
 
 ## Using examples and code snippets to illustrate your points
 
@@ -23,4 +23,4 @@ When explaining a concept and sharing a feature, use a common example that eithe
 
 After you have written your documentation, it's important to edit and proofread it to ensure it is accurate and easy to understand.
 
-Your first draft is probably not going to be the greatest. It is important to read through your own work and then even have another person read through your work to ensure it says what you want it to say.
+Your first draft is probably not going to be the greatest. It is important to read through your work and then even have another person read through your work to ensure it says what you want it to say.

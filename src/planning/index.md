@@ -9,7 +9,7 @@ When defining the scope and goal of your documentation, consider how much inform
 
 ## Choosing the right format for your documentation
 
-Markdown has become the de facto format for markup syntax in most open-source communities. There are other markup languages that have extensibility, with the most notable being [AsciiDoc](https://asciidoc.org). AsciiDoc has many features over Markdown like content reuse and modules.
+Markdown has become the de facto format for markup syntax in most open-source communities. There are other markup languages that have extensibility, with the most notable being [AsciiDoc](https://asciidoc.org). AsciiDoc has many features over Markdown, like content reuse and modules.
 
 Markdown is easy to read and easy to learn, which makes contributing to the documentation easier than formats like [DITA](http://dita.xml.org), [DocBook](https://docbook.org), or other XML formats.
 
