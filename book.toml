@@ -1,0 +1,17 @@
+[book]
+authors = ["Patrick Rachford"]
+language = "en"
+multilingual = false
+src = "src"
+title = "An Open-Source Guide to Documentation"
+
+[preprocessor]
+
+[preprocessor.catppuccin]
+assets_version = "0.1.1" # DO NOT EDIT: Managed by `mdbook-catppuccin install`
+
+[output]
+
+[output.html]
+additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-highlight.css"]
+
