@@ -1,0 +1,341 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>An Open-Source Guide to Documentation</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="./theme/catppuccin.css">
+        <link rel="stylesheet" href="./theme/catppuccin-highlight.css">
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction/index.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="planning/index.html"><strong aria-hidden="true">1.</strong> Planning and organizing your documentation</a></li><li class="chapter-item expanded "><a href="writing/index.html"><strong aria-hidden="true">2.</strong> Writing clear and effective documentation</a></li><li class="chapter-item expanded "><a href="content/index.html"><strong aria-hidden="true">3.</strong> Content types</a></li><li class="chapter-item expanded "><a href="maintaining/index.html"><strong aria-hidden="true">4.</strong> Maintaining and updating your documentation</a></li><li class="chapter-item expanded "><a href="automation/index.html"><strong aria-hidden="true">5.</strong> Automation</a></li><li class="chapter-item expanded "><a href="advanced/index.html"><strong aria-hidden="true">6.</strong> Advanced topics</a></li><li class="chapter-item expanded "><a href="conclusion/index.html"><strong aria-hidden="true">7.</strong> Conclusion</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="misc/about.html">About</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="latte">Latte</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="frappe">Frappé</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">An Open-Source Guide to Documentation</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p>Documentation helps developers quickly understand and use the project, reduces support questions, eases onboarding of new contributors, promotes understanding of the project's architecture, and makes the project more organized and easier to maintain.</p>
+<h2 id="why-is-documentation-important"><a class="header" href="#why-is-documentation-important">Why is documentation important</a></h2>
+<p>A 2017 Open-Source survey observed that 93% of projects contained incomplete or outdated documentation <sup class="footnote-reference"><a href="#1">1</a></sup>. With 60% of contributors rarely or never contributing to documentation.</p>
+<p>In fact, <em>incomplete or confusing documentation</em> ranked the highest for problems encountered in the open-source survey.</p>
+<p>Improving documentation may lead to improvements for the users of the project as well as improving the project itself.</p>
+<h2 id="why-write-this-book"><a class="header" href="#why-write-this-book">Why write this book</a></h2>
+<p>I wanted to write this book as a way to guide open-source projects into delivering high-quality content.</p>
+<p>Writing good documentation is hard, managing and updating good docs is a project in of itself. The purpose of this book is to provide strategies that any maintainer can implement.</p>
+<p>Documentation is an essential part of any open-source project. It helps users understand how to use your project and encourages them to contribute. In this book, we will cover the importance of documentation for open-source projects and how to plan, write, and maintain effective documentation.</p>
+<h2 id="who-is-this-book-for"><a class="header" href="#who-is-this-book-for">Who is this book for</a></h2>
+<p>This book is for anyone who wants to improve accessibility to technology. By writing good documentation, you can help improve participation of your community and strength the tools you bring.</p>
+<p>Documentation is important for orienting users to a project. Users learn how to use and contribute to it, as well as the terms of use and standards of conduct. However, many open-source contributors do not frequently contribute to documentation, and incomplete or outdated documentation is a common issue. It is essential to use clear and accessible language when communicating in open-source projects, as nearly a quarter of the community may not speak or read English fluently.</p>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>https://opensourcesurvey.org/2017/</p>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="planning-and-organizing-your-documentation"><a class="header" href="#planning-and-organizing-your-documentation">Planning and organizing your documentation</a></h1>
+<p>When creating documentation, consider the scope, goals, and format. Start with an outline to plan out the user's journey.
+Any attempt to plan for documentation around the user's needs will greatly improve what is written.</p>
+<h2 id="defining-your-documentations-scope-and-goals"><a class="header" href="#defining-your-documentations-scope-and-goals">Defining your documentation's scope and goals</a></h2>
+<p>When defining the scope and goal of your documentation, consider how much information is necessary for your users to be successful. You should provide enough information for them to understand the full extent of your product, without overwhelming them with unnecessary details.</p>
+<h2 id="choosing-the-right-format-for-your-documentation"><a class="header" href="#choosing-the-right-format-for-your-documentation">Choosing the right format for your documentation</a></h2>
+<p>Markdown has become the de facto format for markup syntax in most open-source communities. There are other markup languages that have extensibility, with the most notable being <a href="https://asciidoc.org">AsciiDoc</a>. AsciiDoc has many features over Markdown, like content reuse and modules.</p>
+<p>Markdown is easy to read and easy to learn, which makes contributing to the documentation easier than formats like <a href="http://dita.xml.org">DITA</a>, <a href="https://docbook.org">DocBook</a>, or other XML formats.</p>
+<p>When choosing the right format for your documentation, consider the learning curve and how complex your documentation needs to be to take advantage of higher level markup and XML syntaxes.</p>
+<h2 id="creating-a-documentation-outline"><a class="header" href="#creating-a-documentation-outline">Creating a documentation outline</a></h2>
+<p>Outlines provide a high-level overview of what will be covered in your documentation.
+By spending time creating an outline, you can discover your user's journey and how they will approach the documentation.</p>
+<p>When creating an outline for your documentation, you should consider how users will navigate through the information. Think about what topics are important and need to be covered, and break the documentation down into sections. By doing this, you can ensure that each page has a purpose and that the content is organized in a way that is easy to understand. Additionally, consider how you can use visuals such as images, diagrams, and videos to supplement the written content and make it easier to understand.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="writing-clear-and-effective-documentation"><a class="header" href="#writing-clear-and-effective-documentation">Writing clear and effective documentation</a></h1>
+<p>Writing clear and effective documentation is not an easy task. To accurately evaluate your writing task, you should know your audience, use headings and subheadings to organize your content, and provide examples to illustrate your points.</p>
+<h2 id="writing-for-your-audience"><a class="header" href="#writing-for-your-audience">Writing for your audience</a></h2>
+<p>Writing for your audience means you must know your audience. Understanding your target audience will help you write documentation that is tailored to their needs and level of expertise.</p>
+<p>Use clear and concise language, and avoid using technical jargon or complex sentence structures.</p>
+<h2 id="using-headings-and-subheadings-to-organize-your-content"><a class="header" href="#using-headings-and-subheadings-to-organize-your-content">Using headings and subheadings to organize your content</a></h2>
+<p>Turning an outline into headings and subheadings keeps your documentation focused and on tasked.
+Your users can benefit from headings and subheadings, as they can quickly scan the document to find answers to their questions.</p>
+<h2 id="using-examples-and-code-snippets-to-illustrate-your-points"><a class="header" href="#using-examples-and-code-snippets-to-illustrate-your-points">Using examples and code snippets to illustrate your points</a></h2>
+<p>Illustrating your points with examples and code snippets can help users understand how to use your project more effectively.</p>
+<p>When explaining a concept and sharing a feature, use a common example that either the user can relate to or something that they might come across. For example, if you've created a CSS styling library, you can share how to use that styling library against some common use cases.</p>
+<h2 id="editing-and-proofreading-your-documentation"><a class="header" href="#editing-and-proofreading-your-documentation">Editing and proofreading your documentation</a></h2>
+<p>After you have written your documentation, it's important to edit and proofread it to ensure it is accurate and easy to understand.</p>
+<p>Your first draft is probably not going to be the greatest. It is important to read through your work and then even have another person read through your work to ensure it says what you want it to say.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="content-types"><a class="header" href="#content-types">Content types</a></h1>
+<p>When writing your documentation, you should try to keep focus on which content type you're writing.</p>
+<h2 id="overview-of-documentation-content"><a class="header" href="#overview-of-documentation-content">Overview of documentation content</a></h2>
+<p>In 2017, Daniele Procida shared his ideas on <em>The four kinds of documentation</em><sup class="footnote-reference"><a href="#1">1</a></sup>. I will be using Procida's ideas, <em>Diátaxis documentation framework</em>, which are also documented on the <a href="https://diataxis.fr">Diataxis</a> website. While it can be argued that there are additional types of documentation, focusing on which type of documentation you're writing for your users will help maintain clarity and reach the objective.</p>
+<h3 id="1-tutorials"><a class="header" href="#1-tutorials">1. Tutorials</a></h3>
+<blockquote>
+<p>Tutorials are lessons that take the reader by the hand through a series of steps to complete a project of some kind. Tutorials are learning-oriented. <sup class="footnote-reference"><a href="#2">2</a></sup></p>
+</blockquote>
+<p>A tutorial is a lesson focused on teaching practical skills, helping beginners gain basic competence with a product, so they can use it for their purposes. It should also show the learner that they can be successful with the product by having them do something meaningful and attainable. After completing a tutorial, the learner should be able to understand the product and the rest of the documentation. A good tutorial is essential for a product to acquire new users.</p>
+<h3 id="2-how-to-guides"><a class="header" href="#2-how-to-guides">2. How-to guides</a></h3>
+<blockquote>
+<p>How-to guides are directions that take the reader through the steps required to solve a real-world problem. How-to guides are goal-oriented. <sup class="footnote-reference"><a href="#3">3</a></sup></p>
+</blockquote>
+<p>How-to guides are like recipes that provide step-by-step instructions to achieve a specific goal or solve a problem. They are important because they help users understand what a product is capable of doing and are often the most-read sections of documentation.</p>
+<h3 id="3-reference"><a class="header" href="#3-reference">3. Reference</a></h3>
+<blockquote>
+<p>Reference guides are technical descriptions of the machinery and how to operate it. Reference material is information-oriented. <sup class="footnote-reference"><a href="#4">4</a></sup></p>
+</blockquote>
+<p>Reference guides provide users with a concise description of a product, such as software, and how to use it. Reference material is essential to provide users with the truth and certainty they need to do their work with confidence.</p>
+<h3 id="4-explanation"><a class="header" href="#4-explanation">4. Explanation</a></h3>
+<blockquote>
+<p>Explanation is discussion that clarifies and illuminates a particular topic. Explanation is understanding-oriented. <sup class="footnote-reference"><a href="#5">5</a></sup></p>
+</blockquote>
+<p>Explanations are a type of documentation that provides a more in-depth understanding of a subject by exploring it from different angles. It is not a how-to guide or reference material, but rather a more relaxed, open-ended discussion of the topic. Explanation allows readers to consider the subject without being tied to the product itself.</p>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p><a href="https://www.youtube.com/watch?v=p0PPtdRHG6M">https://www.youtube.com/watch?v=p0PPtdRHG6M</a></p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
+<p><a href="https://diataxis.fr/tutorials/">https://diataxis.fr/tutorials/</a></p>
+</div>
+<div class="footnote-definition" id="3"><sup class="footnote-definition-label">3</sup>
+<p><a href="https://diataxis.fr/how-to-guides/">https://diataxis.fr/how-to-guides/</a></p>
+</div>
+<div class="footnote-definition" id="4"><sup class="footnote-definition-label">4</sup>
+<p><a href="https://diataxis.fr/reference/">https://diataxis.fr/reference/</a></p>
+</div>
+<div class="footnote-definition" id="5"><sup class="footnote-definition-label">5</sup>
+<p><a href="https://diataxis.fr/explanation/">https://diataxis.fr/explanation/</a></p>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="maintaining-and-updating-your-documentation"><a class="header" href="#maintaining-and-updating-your-documentation">Maintaining and updating your documentation</a></h1>
+<p>The importance of maintaining and updating your documentation with your code base.</p>
+<h2 id="developing-a-documentation-style-guide"><a class="header" href="#developing-a-documentation-style-guide">Developing a documentation style guide</a></h2>
+<p>Developing a documentation style guide for your project is a way to maintain a singular and consistent voice across all documentation types.</p>
+<p>Rather than creating a brand-new style guide, consider using existing ones.</p>
+<ul>
+<li><a href="https://developers.google.com/style">Google</a></li>
+<li><a href="https://learn.microsoft.com/en-us/style-guide/welcome/">Microsoft</a></li>
+<li><a href="https://www.chicagomanualofstyle.org/book/ed17/frontmatter/toc.html">Chicago Manual of Style</a></li>
+</ul>
+<p>Style guides can remove common questions and enforce voice and tone across your documentation.</p>
+<h2 id="keeping-your-documentation-up-to-date-with-new-releases"><a class="header" href="#keeping-your-documentation-up-to-date-with-new-releases">Keeping your documentation up to date with new releases</a></h2>
+<p>As you ship updates to your product, ensure that your documentation is kept updated.
+Users who come across old and outdated documentation can become frustrated. It is often said, that the only thing worse than no documentation is wrong documentation.</p>
+<h2 id="encouraging-and-responding-to-community-feedback-and-contributions"><a class="header" href="#encouraging-and-responding-to-community-feedback-and-contributions">Encouraging and responding to community feedback and contributions</a></h2>
+<p>Ensuring positive
+Creating a code of conduct can help curb negative responses.
+Using Pull Request and Issue templates will also help users to submit good ideas.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="automation"><a class="header" href="#automation">Automation</a></h1>
+<p>Just like with code releases, documentation can benefit from using the same tools for automating.</p>
+<p>Automation and documentation tools can also help you streamline the documentation process.</p>
+<h2 id="cicd"><a class="header" href="#cicd">CI/CD</a></h2>
+<p>Continuous integration, continuous delivery, and continuous deployment workflows can be used for documentation site. This can help ensure that your documentation is always up-to-date and accurate, and that any changes are quickly tested and deployed.</p>
+<p>Continuous integration can automate processes such as running tests and builds, while continuous delivery and deployment can automate the process of releasing updates to your documentation. This can help accelerate the process of releasing updates, as well as make it easier to track and troubleshoot any issues that arise.</p>
+<p>It's important to consider the needs of your documentation when selecting the appropriate tools for your workflow. Look for tools that have good documentation and support, and make sure they can handle the complexity of your project. Additionally, make sure that the cost of the tools is worth the features and capabilities they provide.</p>
+<h2 id="tests-and-other-checks"><a class="header" href="#tests-and-other-checks">Tests and other checks</a></h2>
+<p>You can run tests on your documentation in a GitHub repo or other to check for broken links or even code samples.</p>
+<h3 id="testing-links"><a class="header" href="#testing-links">Testing links</a></h3>
+<p>There are a variety of GitHub Actions that you can run on your repositories documentation or pull requests, which can help contributors feel confident that they won’t break anything.</p>
+<h3 id="testing-code-samples"><a class="header" href="#testing-code-samples">Testing code samples</a></h3>
+<p>There isn't a one-size-fits-all solution to test code samples in documentation. Depending on the coding language and documentation framework you choose will determine the solution you use to test code samples in your documentation.</p>
+<p>For example, you can test Rust code with <a href="https://rust-lang.github.io/mdBook/cli/test.html">mdBook</a>; however, at the time of this writing, no other languages are tested by default.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="advanced-topics"><a class="header" href="#advanced-topics">Advanced topics</a></h1>
+<p>The following discuss advanced topics of managing documentation.</p>
+<h2 id="creating-and-maintaining-a-documentation-website"><a class="header" href="#creating-and-maintaining-a-documentation-website">Creating and maintaining a documentation website</a></h2>
+<p>Users generally interact with your documentation through a web server. Finding a way to host and serve your documentation can be tricky.
+You will need to find a static site generator and a server to host the documentation.</p>
+<h3 id="static-site-generators"><a class="header" href="#static-site-generators">Static site generators</a></h3>
+<p>Static site generators generate full HTL websites based on a set of templates. There are many static site generators. In fact, <a href="https://jamstack.org/generators/">Jamstack</a> contains a list of static site generators that can be configured for Jamstack sites.</p>
+<p>The following are highlighted static sites:</p>
+<ul>
+<li><a href="https://rust-lang.github.io/mdBook/index.html">Mdbook</a></li>
+<li><a href="https://gohugo.io">Hugo</a></li>
+<li><a href="https://docusaurus.io">Docusaurus</a></li>
+</ul>
+<h3 id="hosting-documentation"><a class="header" href="#hosting-documentation">Hosting documentation</a></h3>
+<p><a href="https://pages.github.com">GitHub pages</a> can host websites directly from your GitHub repository. You can manage your documentation repo just like you would any other code and make edits and releases.</p>
+<p><a href="https://docs.readthedocs.io/en/stable/">Read the Docs</a> also simplifies hosting your documentation and offers its servers for free. The advantage of Read the Docs, is that your documentation can live on GitHub, BitBucket, or GitLab.</p>
+<h4 id="paid-services"><a class="header" href="#paid-services">Paid services</a></h4>
+<p>If you're maintaining documentation for a large business, you may want to look at paid options like <a href="https://www.netlify.com">Netlify</a> or <a href="https://vercel.com/">Vercel</a>.</p>
+<h2 id="using-documentation-tools-and-automation"><a class="header" href="#using-documentation-tools-and-automation">Using documentation tools and automation</a></h2>
+<p>The use of linters, spellcheckers, and formatters are a great set of tools to use against your documentation.</p>
+<h3 id="linters"><a class="header" href="#linters">Linters</a></h3>
+<p>Just like with code, you can lint your prose for issues.
+Linters like <a href="https://alexjs.com">alexjs</a> can be used to catch insensitive or inconsiderate writing.</p>
+<p>More complex linters like <a href="https://vale.sh">Vale</a> allow you to create your own rules or use existing style guides to enforce writing standards.</p>
+<h3 id="spellcheckers"><a class="header" href="#spellcheckers">Spellcheckers</a></h3>
+<p>There are a variety of spellcheckers and can be used at any stage of the writing process.
+Consider adding a spellchecker to your text editor. For example, VS Code has a Markdown spellchecker from <a href="https://marketplace.visualstudio.com/items?itemName=adamvoss.vscode-languagetool">LanguageTool,</a> which provides offline grammar checking in VS Code using a local server.</p>
+<h3 id="formatters"><a class="header" href="#formatters">Formatters</a></h3>
+<p>While the line between linters and formatters is thin, some formatters like <a href="https://prettier.io">Prettier</a> and <a href="https://dprint.dev">dprint</a> can format and lint markdown files and even code blocks. Formatters aren't a one size fits all solution. For example, Prettier doesn't work for Python code blocks. You'd have to use a formatter like <a href="https://github.com/adamchainz/blacken-docs">blacken-docs</a>, which runs the <a href="https://black.readthedocs.io/en/stable/">black</a> formatter on code blocks.</p>
+<p>Formatting is useful so that you have consistency throughout your docs and check for specific errors.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h1>
+<p>To conclude this book and the importance of documentation for open-source projects.</p>
+<h2 id="recap-of-key-points"><a class="header" href="#recap-of-key-points">Recap of key points</a></h2>
+<ul>
+<li>Documentation is important for open-source projects because it helps users understand and use the project more effectively.</li>
+<li>When planning and organizing your documentation, it's essential to define the scope and goals of your documentation, choose the right format, and create an outline.</li>
+<li>To write clear and effective documentation, it's critical to consider your audience, use headings and subheadings to organize your content, include examples and code snippets, and edit and proofread your documentation.</li>
+<li>Maintaining and updating your documentation involves developing a documentation style guide, keeping your documentation up to date with new releases, and encouraging and responding to community feedback and contributions.</li>
+<li>Advanced topics in open-source documentation include localization and internationalization, creating and maintaining a documentation website, and using documentation tools and automation.</li>
+</ul>
+<!-- ## Additional resources for further learning -->
+<h2 id="final-thoughts-on-the-importance-of-documentation-for-open-source-projects"><a class="header" href="#final-thoughts-on-the-importance-of-documentation-for-open-source-projects">Final thoughts on the importance of documentation for open-source projects</a></h2>
+<p>It's significant to emphasize the importance of documentation for the success and sustainability of open-source projects.</p>
+<p>Good documentation helps users understand and use the project more effectively, which can lead to increased adoption and contributions. It also helps maintainers by providing a clear guide for new contributors and reducing the workload of answering frequently asked questions.</p>
+<p>However, documentation is often overlooked or neglected in open-source projects, especially when the project is small or has limited resources. It's important for project maintainers to prioritize documentation and make it an ongoing effort, rather than something that is only done when there is extra time or resources.</p>
+<p>Overall, the final thoughts on the importance of documentation for open-source projects should encourage maintainers to prioritize and invest in good documentation, and recognize the long-term benefits it brings to both the project and the community. Effective documentation is an essential part of any successful open-source project.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="about-me"><a class="header" href="#about-me">About me</a></h1>
+<p>My name is Patrick Rachford, and I'm a highly experienced technical writer. I started my career on the AWS CloudFormation team and have focused on developer content ever since. I am committed to producing high-quality, accurate documents and have an extensive portfolio of successful projects.</p>
+<p>In addition to writing, I am also a skilled editor and proofreader with some technical skills. I have helped large enterprises, start-ups, and open-source projects with their documentation. I am a highly motivated individual who is committed to delivering the highest quality work.</p>
+<p>I am passionate about my work and am always willing to learn new skills and techniques to improve my craft. You can contact me at the following email address.</p>
+<p><a href="mailto:prachford@icloud.com">Contact me</a></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+    </body>
+</html>
