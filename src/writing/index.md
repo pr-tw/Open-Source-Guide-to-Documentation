@@ -1,6 +1,6 @@
 # Writing clear and effective documentation
 
-Writing clear and effective documentation is not an easy task.
+Writing clear and effective documentation is not an easy task. To accurately evaluate your writing task, you should know your audience, use headings and subheadings to organize your content, and provide examples to illustrate your points.
 
 ## Writing for your audience
 
