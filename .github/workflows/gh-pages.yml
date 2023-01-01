@@ -1,29 +1,29 @@
-name: Deploy
+name: GH Pages Deploy
+
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+
   pull_request:
+    branches: [main]
 
 jobs:
-  deploy:
-    runs-on: ubuntu-20.04
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
+  build-deploy:
+    runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout 🛎
+        uses: actions/checkout@v2
 
-      - name: Setup mdBook
-        uses: peaceiris/actions-mdbook@v1
-        with:
-          mdbook-version: '0.4.10'
-          # mdbook-version: 'latest'
+      - name: Install dependencies 🔧
+        run: make install
 
-      - run: mdbook build
+      - name: Build 🏗️
+        run: make build
 
-      - name: Deploy
+      - name: Deploy to GitHub Pages 🚀
+        if: ${{ github.event_name != 'pull_request' }}
         uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/main' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./book
+          publish_dir: book
