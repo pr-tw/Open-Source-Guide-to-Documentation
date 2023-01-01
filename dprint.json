@@ -1,6 +1,16 @@
 {
   "markdown": {
-  },
+    "lineWidth": 80,
+    "newLineKind": "lf",
+    "textWrap": "maintain",
+    "emphasisKind": "underscores",
+    "strongKind": "asterisks",
+    "ignoreDirective": "dprint-ignore",
+    "ignoreFileDirective": "dprint-ignore-file",
+    "ignoreStartDirective": "dprint-ignore-start",
+    "ignoreEndDirective": "dprint-ignore-end"
+  }
+  ,
   "includes": ["**/*.{md}"],
   "excludes": [],
   "plugins": [

@@ -2,7 +2,8 @@ name: Continuous Integration
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
 
 jobs:
@@ -41,3 +42,4 @@ jobs:
           mdbook-version: '${{ steps.mdbook-version.outputs.MDBOOK_VERSION }}'
 
       - run: mdbook test
+
